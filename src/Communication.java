@@ -18,17 +18,17 @@ public class Communication {
 		this.fc = fc;
 	}
 
-	public void connect(String IP, int port) {
+	public boolean connect(String IP, int port) {
 		try {
 			s = new Socket(IP,port);
 			dis = new DataInputStream(s.getInputStream());
 			dos = new DataOutputStream(s.getOutputStream());
 			new ReceaveThread(s).start();			
-		
+			return true;
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+			return false;
 		} catch (IOException e) {
-			e.printStackTrace();
+			return false;
 		}
 	}
 	public void join(String opponentName) {

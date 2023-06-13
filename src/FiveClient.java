@@ -99,13 +99,18 @@ public class FiveClient extends JFrame  {
 	public void connect(){
 		c  = new Communication(this);
 		String ip = control.inputIP.getText();
-		c.connect(ip, FiveServer.TCP_PORT);
+		if (c.connect(ip, FiveServer.TCP_PORT)){
+			message.mesageArea.append("已连接"+"\n");
+			isConnected = true;
+			control.exitGameButton.setEnabled(true);
+			control.connectButton.setEnabled(false);
+			control.joinGameButton.setEnabled(true);
+			control.cancelGameButton.setEnabled(false);
+		}else {
+			JOptionPane.showMessageDialog(this,"连接失败，请稍后再试！");
+		}
+
 	
-		message.mesageArea.append("已连接"+"\n");
-		isConnected = true;
-		control.exitGameButton.setEnabled(true);
-		control.connectButton.setEnabled(false);
-		control.joinGameButton.setEnabled(true);
-		control.cancelGameButton.setEnabled(false);
+
 	}
 }

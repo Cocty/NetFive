@@ -1,16 +1,10 @@
+import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
 
-public class FiveClient extends Frame  {
+public class FiveClient extends JFrame  {
 	PanelBoard board;  
 	PanelUserList userList;
 	PanelMessage message;
@@ -22,7 +16,13 @@ public class FiveClient extends Frame  {
 	Communication c = null;
 	
 	public static void main(String[] args) {
-		FiveClient fc = new FiveClient();	
+		try {
+			// 设置本机系统外观
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		FiveClient fc = new FiveClient();
 	}
 	public FiveClient(){
 		super("五子棋客户端");
@@ -31,7 +31,6 @@ public class FiveClient extends Frame  {
 		
 		timing = new PanelTiming();
 		userList = new PanelUserList();
-		//userList.setSize(200,200);
 		message = new PanelMessage();
 		Panel east = new Panel();
 		east.setLayout(new BorderLayout());
@@ -55,6 +54,7 @@ public class FiveClient extends Frame  {
 		control.cancelGameButton.setEnabled(false);
 		
 		this.setLocation(300,100);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		this.setResizable(false);
 		this.setVisible(true);	

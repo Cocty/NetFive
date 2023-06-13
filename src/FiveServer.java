@@ -1,6 +1,6 @@
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Button;
-import java.awt.Frame;
 import java.awt.Label;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
@@ -13,7 +13,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
-public class FiveServer extends Frame implements ActionListener{
+public class FiveServer extends JFrame implements ActionListener{
 	Label lStatus=new Label("当前连接数:",Label.LEFT);
 	TextArea taMessage=new TextArea("",22,50,TextArea.SCROLLBARS_VERTICAL_ONLY);
 	Button btServerClose=new Button("关闭服务器");
@@ -24,6 +24,12 @@ public class FiveServer extends Frame implements ActionListener{
 	ArrayList<Client>  clients = new ArrayList<Client>();
 
 	public static void main(String[] args){
+		try {
+			// 设置本机系统外观
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		FiveServer fs = new FiveServer();
 		fs.startServer();
 	}
@@ -38,6 +44,7 @@ public class FiveServer extends Frame implements ActionListener{
 		add(btServerClose,BorderLayout.SOUTH);
 			
 		setLocation(400,100);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
 		setResizable(false);

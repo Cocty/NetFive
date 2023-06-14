@@ -19,7 +19,7 @@ public class TimerThread extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if(fc.board.isGoing){
+			if(fc.board.isGoing){	//如果我方的棋盘正在下棋
 				myTotalTime--;
 				fc.timing.setMyTime(myTotalTime);
 				if(myTotalTime<=0){

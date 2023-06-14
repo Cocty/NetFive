@@ -7,15 +7,15 @@ import java.awt.FlowLayout;
 
 public class PanelControl extends JPanel {
 	public JLabel IPlabel = new JLabel("服务器IP:");
-	public JTextField inputIP = new JTextField("127.0.0.1", 12);
+	public JTextField inputIP = new JTextField("localhost", 12);
 	public JButton connectButton = new JButton("连接主机");
 	public JButton joinGameButton = new JButton("加入游戏");
-	public JButton cancelGameButton = new JButton("放弃游戏");
+	public JButton cancelGameButton = new JButton("认输");
 	public JButton exitGameButton = new JButton("关闭程序");
 
 	// 构造函数，负责Panel的初始布局
 	public PanelControl() {
-		setLayout(new FlowLayout(FlowLayout.LEFT));
+		setLayout(new FlowLayout(FlowLayout.CENTER));
 		setBackground(new Color(200, 200, 200));
 		add(IPlabel);
 		add(inputIP);

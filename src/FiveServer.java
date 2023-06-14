@@ -113,7 +113,7 @@ public class FiveServer extends JFrame implements ActionListener{
 			System.exit(0);
 		}
 	}
-	class Client{
+	class Client{	//内部客户端类，服务器作为第三者可以观察谁发送的请求，其对手是谁，方便通信
 		String name;
 		Socket s;
 		String  state; //  1.  ready    2.playing
@@ -125,7 +125,7 @@ public class FiveServer extends JFrame implements ActionListener{
 			this.opponent = null;
 		}
 	}
-	class ClientThread extends Thread{
+	class ClientThread extends Thread{	//为每个连接的客户端分配一个线程
 		private Client c;
 		private DataInputStream dis;
 		private DataOutputStream dos;
@@ -244,6 +244,18 @@ public class FiveServer extends JFrame implements ActionListener{
 						clientNum--;
 						lStatus.setText("连接数" + clientNum);
 						return;
+					}
+					else if(words[0].equals(Command.SEND)){
+						String opponentName = words[1];
+						String content = words[2];
+						//遍历客户端数组找到要聊天的人
+						for(int i=0; i<clients.size(); i++){
+							if(clients.get(i).name.equals(opponentName)){
+								dos = new DataOutputStream(clients.get(i).s.getOutputStream());
+								dos.writeUTF(Command.SEND + ":" + c.name+":"+content);
+								break;
+							}
+						}
 					}
 				}
 				catch (IOException e) {

@@ -38,6 +38,14 @@ public class Communication {
 			e.printStackTrace();
 		}		
 	}
+	public void send(String opponentName,String content) {
+		try {
+			dos.writeUTF(Command.SEND + ":" + opponentName+":"+content);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void go(int col, int row) {
 		try {
 			String msg = Command.GO+ ":" + col + ":" + row;
@@ -69,7 +77,7 @@ public class Communication {
 			e.printStackTrace();
 		}		
 	}
-	class ReceaveThread extends Thread{
+	class ReceaveThread extends Thread{//接收线程，接收服务器发送的信息，然后进行解析
 		Socket s;
 		private DataInputStream dis;
 		private DataOutputStream dos;
@@ -89,6 +97,7 @@ public class Communication {
 						fc.userList.userList.add(fc.myname + ":ready");
 						fc.timing.setMyName(fc.myname);
 						fc.message.mesageArea.append("My name: " + fc.myname + "\n");
+						fc.setTitle("五子棋客户端-"+fc.myname);
 					}
 					
 					else if(words[0].equals(Command.ADD)){
@@ -170,6 +179,10 @@ public class Communication {
 							}
 						}
 						fc.message.mesageArea.append(words[1] + " disconnected" + "\n");
+					} else if (words[0].equals(Command.SEND)) {
+						String name = words[1];
+						String content = words[2];
+						fc.chatArea.mesageArea.append(name+"对你说："+content+"\n");
 					}
 				}
 				catch (IOException e) {

@@ -1,3 +1,5 @@
+package main.client;
+
 public class TimerThread extends Thread {
 	FiveClient fc;
 	private int myTotalTime;

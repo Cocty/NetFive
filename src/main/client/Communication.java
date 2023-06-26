@@ -1,4 +1,5 @@
-import java.awt.Color;
+package main.client;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -152,7 +153,7 @@ public class Communication {
 						fc.control.cancelGameButton.setEnabled(true);
 						fc.control.exitGameButton.setEnabled(false);
 						
-						tt = new TimerThread(fc,60);
+						tt = new TimerThread(fc,120);
 						tt.start();
 						
 						fc.message.mesageArea.append("My color is " + color + "\n");

@@ -1,6 +1,9 @@
+package main.client.server;
+
+import main.client.Command;
+
 import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Label;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
@@ -14,9 +17,9 @@ import java.util.ArrayList;
 
 
 public class FiveServer extends JFrame implements ActionListener{
-	Label lStatus=new Label("当前连接数:",Label.LEFT);
-	TextArea taMessage=new TextArea("",22,50,TextArea.SCROLLBARS_VERTICAL_ONLY);
-	Button btServerClose=new Button("关闭服务器");
+	JLabel lStatus=new JLabel("当前连接数:",Label.LEFT);
+	JTextArea taMessage=new JTextArea("",22,50);
+	JButton btServerClose=new JButton("关闭服务器");
 	ServerSocket ss = null;
 	public static final int TCP_PORT = 4801;
 	static  int clientNum = 0;
@@ -36,7 +39,6 @@ public class FiveServer extends JFrame implements ActionListener{
 	
 	public FiveServer(){
 		super("Java五子棋服务器");
-		
 		btServerClose.addActionListener(this);
 
 		add(lStatus,BorderLayout.NORTH);
@@ -161,7 +163,6 @@ public class FiveServer extends JFrame implements ActionListener{
 					else if(words[0].equals(Command.AGREE)){
 						c.state = "playing";
 						String opponentName = words[1];
-						int opponentIndex;
 						//两个客户相互为对手
 						for(int i=0; i<clients.size(); i++){
 							if(clients.get(i).name.equals(opponentName)){

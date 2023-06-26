@@ -1,6 +1,6 @@
+package main.client;
+
 import java.awt.GridLayout;
-import java.awt.Label;
-import java.awt.Panel;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

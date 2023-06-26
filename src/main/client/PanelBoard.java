@@ -1,3 +1,5 @@
+package main.client;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -19,7 +21,7 @@ public class PanelBoard extends JPanel {
 	public static final int COLS=14;//棋盘列数  	
 	private Image img;  
 	
-	Chess[] chessList=new Chess[(ROWS+1)*(COLS+1)];//初始每个数组元素为null  
+	Chess[] chessList=new Chess[(ROWS+1)*(COLS+1)];//初始每个数组元素为null
 	boolean isBlack=true;//默认开始是黑棋先  
 	int chessCount=0;//当前棋盘棋子的个数 
 	boolean isGamming=false;//是否正在游戏  

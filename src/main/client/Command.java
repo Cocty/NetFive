@@ -1,4 +1,6 @@
-public class Command {  
+package main.client;
+
+public class Command {
 	public static final  String TELLNAME =  "tellName"; 
 	public static final  String ADD =  "add"; 
 	public static final  String JOIN =  "join";

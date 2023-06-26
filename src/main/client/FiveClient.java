@@ -1,3 +1,7 @@
+package main.client;
+
+import main.client.server.FiveServer;
+
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Panel;

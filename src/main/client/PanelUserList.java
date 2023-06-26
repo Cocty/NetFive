@@ -1,3 +1,5 @@
+package main.client;
+
 import java.awt.BorderLayout;
 import java.awt.List;
 import java.awt.Panel;

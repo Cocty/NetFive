@@ -1,3 +1,5 @@
+package main.client;
+
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.TextArea;
